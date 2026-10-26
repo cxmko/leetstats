@@ -1,0 +1,13 @@
+# CPython validation environment pinned to what Pyodide 314.0.7 ships.
+# Use Python 3.14 (Pyodide 314.0.7 runs CPython 3.14.2). Do NOT install
+# pyarrow: Pyodide's pandas runs without it, which affects the str dtype.
+#   uv venv --python 3.14 .venv && uv pip install -r requirements-validate.txt
+numpy==2.4.6
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+scipy==1.18.0
+statsmodels==0.14.6
+lightgbm==4.6.0
+seaborn==0.13.2
+patsy==1.0.2

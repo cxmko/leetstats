@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeetStats</title>
+<meta name="description" content="Drill NumPy, pandas, plotting, scikit-learn, statistics and quant-research bricks in the browser.">
+<link rel="icon" type="image/png" href="__FAVICON__">
+<link rel="apple-touch-icon" href="__FAVICON__">
+<link rel="stylesheet" href="__CODEMIRROR__codemirror.min.css">
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+<header class="topbar">
+  <button class="icon-btn only-narrow" id="drawer-btn" title="Problem list" aria-label="Problem list">☰</button>
+  <a class="brand" href="#problems" aria-label="LeetStats home"><img class="logo-light" src="__ICON_LIGHT__" alt=""><img class="logo-dark" src="__ICON_DARK__" alt=""><span class="word"><span class="w1">Leet</span><span class="w2">Stats</span></span></a>
+  <nav class="tabs" id="tabs">
+    <a href="#problems" data-view="problems">Problems</a>
+    <a href="#today" data-view="today">Today<span class="badge" id="badge-today"></span></a>
+    <a href="#review" data-view="review">Review<span class="badge" id="badge-review"></span></a>
+    <a href="#cards" data-view="cards">Flashcards<span class="badge" id="badge-cards"></span></a>
+    <a href="#playground" data-view="playground">Playground</a>
+    <a href="#mock" data-view="mock">Mock</a>
+    <a href="#bricks" data-view="bricks">Bricks</a>
+    <a href="#stats" data-view="stats">Stats</a>
+  </nav>
+  <div class="spacer"></div>
+  <button class="py-pill" id="py-pill" title="Python runtime status">
+    <span class="dot"></span><span id="py-text">Python idle</span>
+    <span class="bar"><span id="py-bar"></span></span>
+  </button>
+  <button class="icon-btn" id="theme-btn" title="Theme: system" aria-label="Toggle theme">◐</button>
+  <div class="menu-wrap">
+    <button class="icon-btn" id="menu-btn" title="Menu" aria-label="Menu">⋯</button>
+    <div class="menu" id="menu" hidden>
+      <button data-act="copy-stats">Copy my stats for Claude</button>
+      <button data-act="export">Export progress (JSON)</button>
+      <button data-act="import">Import progress…</button>
+      <button data-act="shortcuts">Keyboard shortcuts</button>
+      <button data-act="about">About this build</button>
+    </div>
+  </div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+</header>
+
+<main id="app">
+  <!-- Problems -->
+  <section class="view" id="view-problems">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-head">
+        <input type="search" id="search" placeholder="Search problems…" autocomplete="off" spellcheck="false">
+        <div class="filters">
+          <select id="f-section" aria-label="Section"><option value="">All sections</option></select>
+          <div class="multi" id="f-topic">
+            <button class="multi-btn" type="button">All topics</button>
+            <div class="multi-pop" hidden></div>
+          </div>
+          <select id="f-diff" aria-label="Difficulty">
+            <option value="">Any difficulty</option><option>Easy</option><option>Medium</option><option>Hard</option>
+          </select>
+          <select id="f-status" aria-label="Status">
+            <option value="">Any status</option><option value="new">Not started</option>
+            <option value="attempted">Attempted</option><option value="solved">Solved</option>
+            <option value="due">Due for review</option><option value="flagged">Flagged</option>
+          </select>
+        </div>
+        <div class="side-count" id="side-count"></div>
+      </div>
+      <ol class="plist" id="plist"></ol>
+    </aside>
+    <article class="problem" id="problem"></article>
+    <section class="workbench">
+      <div class="toolbar">
+        <button class="btn primary" id="run-btn" title="Run on the example (Ctrl/Cmd+Enter)">▶ Run</button>
+        <button class="btn success" id="submit-btn" title="Submit to hidden tests (Ctrl/Cmd+Shift+Enter)">Submit</button>
+        <button class="btn danger" id="stop-btn" title="Stop (restarts Python)" hidden>■ Stop</button>
+        <span class="sep"></span>
+        <button class="btn ghost" id="hint1-btn">Hint 1</button>
+        <button class="btn ghost" id="hint2-btn">Hint 2</button>
+        <button class="btn ghost" id="sol-btn">Solution</button>
+        <button class="btn ghost" id="reset-btn" title="Reset the editor to the starter code">Reset</button>
+        <span class="grow"></span>
+        <div class="split">
+          <button class="btn" id="next-btn" title="Next problem (Alt+N)">Next ›</button>
+          <button class="btn caret" id="next-more" aria-label="More navigation">▾</button>
+          <div class="menu right" id="next-menu" hidden>
+            <button data-nav="next">Next in learning path <kbd>Alt+N</kbd></button>
+            <button data-nav="unsolved">Next unsolved</button>
+            <button data-nav="random">Random from current filters</button>
+          </div>
+        </div>
+      </div>
+      <div class="editor-host" id="editor-host"></div>
+      <div class="results" id="results">
+        <div class="results-empty">Run (<kbd>Ctrl</kbd>+<kbd>Enter</kbd>) tries your code on the example. Submit (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>) runs the hidden tests.</div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Today -->
+  <section class="view page" id="view-today" hidden></section>
+  <!-- Review -->
+  <section class="view page" id="view-review" hidden></section>
+  <!-- Flashcards -->
+  <section class="view page" id="view-cards" hidden></section>
+  <!-- Playground -->
+  <section class="view" id="view-playground" hidden>
+    <aside class="pg-side" id="pg-side"></aside>
+    <section class="pg-main">
+      <div class="toolbar">
+        <button class="btn primary" id="pg-run" title="Run the selection, or everything (Ctrl/Cmd+Enter)">▶ Run</button>
+        <button class="btn danger" id="pg-stop" hidden>■ Stop</button>
+        <button class="btn ghost" id="pg-reset" title="Fresh namespace with every dataset reloaded">Reset namespace</button>
+        <button class="btn ghost" id="pg-clear">Clear output</button>
+        <span class="grow"></span>
+        <span class="muted small" id="pg-hint">Namespace persists between runs · selection runs alone</span>
+      </div>
+      <div class="editor-host" id="pg-editor"></div>
+      <div class="results" id="pg-out"></div>
+    </section>
+  </section>
+  <!-- Mock -->
+  <section class="view" id="view-mock" hidden></section>
+  <!-- Bricks -->
+  <section class="view page" id="view-bricks" hidden></section>
+  <!-- Stats -->
+  <section class="view page" id="view-stats" hidden></section>
+</main>
+
+<div class="modal-back" id="modal" hidden><div class="modal" role="dialog" aria-modal="true"><div id="modal-body"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script id="data" type="application/json">__DATA_JSON__</script>
+<script id="worker-src" type="text/plain">
+/*__WORKER_JS__*/
+</script>
+<script src="__CODEMIRROR__codemirror.min.js"></script>
+<script src="__CODEMIRROR__mode/python/python.min.js"></script>
+<script src="__CODEMIRROR__addon/edit/matchbrackets.min.js"></script>
+<script src="__CODEMIRROR__addon/comment/comment.min.js"></script>
+<script src="__CODEMIRROR__addon/runmode/runmode.min.js"></script>
+<script>
+/*__APP_JS__*/
+</script>
+</body>
+</html>

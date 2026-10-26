@@ -1,0 +1,231 @@
+# Learning-path order (one problem id per line; '#' starts a comment).
+# The sidebar numbers, "Next" and the Today queue follow this order.
+# IDs are permanent: slot new problems in where they belong. Problems not
+# listed here are appended at the end (build.py prints a note).
+
+# ---- NumPy (34)
+np-001   # E  Strike grid
+np-002   # E  Constant-correlation matrix
+np-003   # E  Pixels to float32 in [0, 1]
+np-004   # E  Hour-by-day matrix
+np-005   # E  Zero a row without touching the input
+np-006   # E  Recent positive days
+np-008   # E  Winsorize at the 1st and 99th percentiles
+np-009   # E  Signal from z-scores
+np-012   # E  Top-k indices
+np-014   # E  Daily sign-ups from a cumulative counter
+np-015   # E  Most frequent label
+np-017   # E  Shuffled train/test indices
+np-019   # E  One-hot encode labels
+np-007   # M  Probability of the true class
+np-010   # M  Each customer's spend shares
+np-011   # M  Pairwise distances
+np-013   # M  Which tax bracket?
+np-016   # M  Bootstrap the mean
+np-018   # M  Interquartile range with missing readings
+np-020   # M  Moving average with sliding windows
+np-021   # M  Tangency portfolio weights
+np-022   # M  OLS coefficients with an intercept
+np-023   # M  Cosine similarity matrix
+np-024   # M  Variance explained by the first factor
+np-026   # M  Correlation matrix from scratch
+np-027   # M  Numerically stable softmax
+np-029   # M  One gradient step: linear regression
+np-030   # M  One gradient step: logistic regression
+np-031   # M  k-means step 1: assign to the nearest centroid
+np-025   # H  Many portfolio variances at once
+np-028   # H  Cross-entropy from logits
+np-032   # H  k-means step 2: update the centroids
+np-033   # H  PCA via SVD
+np-034   # H  Scaled dot-product attention
+
+# ---- pandas (68)
+pd-001   # E  Load selected columns from a semicolon CSV
+pd-004   # E  Share of missing values per column
+pd-067   # E  Summary statistics of the numeric columns
+pd-007   # E  DataFrame from API records
+pd-008   # E  Fix column types
+pd-010   # E  Big orders from the North
+pd-011   # E  Orders in chosen categories with 2 to 4 items
+pd-012   # E  Filter with variables in a query string
+pd-013   # E  First rows by position, not by label
+pd-014   # E  Sort by region, then by revenue descending
+pd-015   # E  Top-n orders, keeping ties
+pd-017   # E  Add derived columns in one chain
+pd-018   # E  Recode region codes
+pd-019   # E  Normalize inconsistent spellings
+pd-020   # E  Zero out negative glitches, keep NaN
+pd-021   # E  Case-insensitive product search
+pd-023   # E  Split 'Last, First' names
+pd-024   # E  Date parts and weekends
+pd-026   # E  Fill numeric gaps with column medians
+pd-028   # E  Drop incomplete rows
+pd-032   # E  Category mix in percent
+pd-034   # E  Spend quartiles
+pd-035   # E  Region summary with named aggregations
+pd-037   # E  Head count vs reported salaries
+pd-039   # E  Order number per customer
+pd-042   # E  Internet mix by contract type
+pd-043   # E  Quarterly columns to long format
+pd-044   # E  Long prices to a wide table
+pd-045   # E  From (region, category) pairs to a grid
+pd-047   # E  Join orders to customers with different key names
+pd-050   # E  Stack monthly extracts
+pd-052   # E  Daily change and return
+pd-055   # E  All-time high to date
+pd-058   # E  Fill in missing days with zero
+pd-062   # E  One-hot encode categorical columns
+pd-002   # M  Parse a messy export: missing markers, ZIP codes, dates
+pd-003   # M  European CSV: decimal commas
+pd-005   # M  Column profile table
+pd-006   # M  Most correlated pair of features
+pd-009   # M  Prices stored as text
+pd-016   # M  Salary percentile within the department
+pd-022   # M  Extract amount and unit from package sizes
+pd-025   # M  Parse hand-typed day-first dates
+pd-027   # M  Fill missing salaries with the department median
+pd-029   # M  Interpolate sensor gaps in time
+pd-030   # M  Keep the latest record per employee
+pd-031   # M  Ordered job levels
+pd-033   # M  Age bands
+pd-036   # M  Each customer's share of their region's revenue
+pd-038   # M  Orders of repeat customers only
+pd-040   # M  Monthly revenue per region
+pd-041   # M  Revenue matrix with totals
+pd-046   # M  One ticker out of a (date, ticker) panel
+pd-048   # M  Audit a join
+pd-053   # M  Per-ticker returns in a long panel
+pd-054   # M  7-day rolling average with missing days
+pd-056   # M  Exponentially weighted average
+pd-057   # M  Hourly min, mean and max of a sensor
+pd-068   # M  Rate in force on each business day
+pd-061   # M  Top category per region
+pd-063   # M  Remove z-score outliers
+pd-065   # M  Reusable cleaning step in a chain
+pd-049   # H  A safe many-to-one join
+pd-051   # H  Attach the latest quote to each trade
+pd-059   # H  20-day rolling volatility per ticker
+pd-060   # H  Count posts per tag
+pd-064   # H  IQR outliers within each department
+pd-066   # H  Sessionize a clickstream
+
+# ---- Plotting (23)
+pl-001   # E  Price line with a date axis
+pl-002   # E  Scatter coloured by group
+pl-003   # E  Histogram of daily returns
+pl-004   # E  Sorted horizontal bar chart
+pl-005   # E  Box plot of salary per department
+pl-008   # E  Exponential growth on a log scale
+pl-011   # E  One line per column with pandas .plot
+pl-012   # E  Overlaid histograms with seaborn
+pl-013   # E  Violin plot per category, in a fixed order
+pl-019   # E  Top-10 feature importances
+pl-023   # E  Scatter with a hue in seaborn
+pl-006   # M  Grid of histograms with shared axes
+pl-007   # M  Price and volume on twin axes
+pl-009   # M  Annotated drawdown chart
+pl-010   # M  Percent tick labels
+pl-014   # M  Annotated correlation heatmap
+pl-015   # M  Figure-level facets with relplot
+pl-016   # M  ROC curve with AUC in the legend
+pl-017   # M  Confusion-matrix heatmap
+pl-018   # M  Residuals vs fitted values
+pl-020   # M  Elbow curve for k-means
+pl-021   # M  Cumulative explained variance
+pl-022   # H  Four-panel EDA figure
+
+# ---- scikit-learn (36)
+sk-001   # E  Stratified train/test split
+sk-002   # E  Scale with training statistics only
+sk-003   # E  Impute with the training median
+sk-005   # E  Ordinal encoding with an explicit order
+sk-009   # E  The baseline to beat
+sk-010   # E  Linear regression coefficients with the intercept
+sk-012   # E  Probability of the positive class
+sk-014   # E  Precision, recall and F1
+sk-015   # E  Classification report as a table
+sk-016   # E  ROC AUC and log loss from probabilities
+sk-017   # E  Confusion matrix normalized per true class
+sk-018   # E  Regression metrics: MAE, RMSE, R²
+sk-004   # M  One-hot encoding that survives unseen categories
+sk-007   # M  Named pipeline steps and a nested parameter
+sk-011   # M  Which features does the Lasso drop?
+sk-019   # M  Cross-validated ROC AUC
+sk-020   # M  Train and test scores for several metrics
+sk-021   # M  Folds that keep each user on one side
+sk-022   # M  Expanding-window folds for time series
+sk-024   # M  Randomized search over tree depth and leaf size
+sk-025   # M  Random-forest top-5 importances
+sk-026   # M  Gradient boosting that handles NaN natively
+sk-027   # M  Class weights for a rare class
+sk-028   # M  Polynomial features for a curved target
+sk-030   # M  Validation curve: choose the tree depth
+sk-031   # M  Learning curve
+sk-032   # M  Choose k: inertia and silhouette
+sk-033   # M  How many components for 95% of the variance?
+sk-035   # M  LightGBM classifier with the scikit-learn API
+sk-006   # H  Preprocess columns by dtype
+sk-008   # H  Logistic-regression coefficients by feature name
+sk-013   # H  Pick a threshold for a target precision
+sk-023   # H  Grid search over a pipeline
+sk-029   # H  Permutation importance on held-out data
+sk-034   # H  Feature selection without leakage
+sk-036   # H  LightGBM with early stopping
+
+# ---- Statistics (8)
+st-002   # E  Pearson vs Spearman correlation
+st-001   # M  Did variant B lift revenue per user?
+st-003   # M  Chi-square test of independence
+st-004   # M  Bootstrap confidence interval for the median
+st-006   # M  OLS with statsmodels: coefficients, t-stats, R²
+st-008   # M  Autocorrelation of returns
+st-005   # H  Permutation test for a difference in means
+st-007   # H  Newey-West standard errors
+
+# ---- Quant research (12)
+qt-001   # E  Simple and log returns
+qt-004   # E  Annualized Sharpe ratio
+qt-002   # M  Compound daily returns into monthly returns
+qt-003   # M  Annualized rolling volatility
+qt-005   # M  Maximum drawdown with its peak and trough dates
+qt-006   # M  Alpha and beta to the market
+qt-007   # M  Cross-sectional z-score per date
+qt-010   # M  Rank IC per date
+qt-012   # M  Walk-forward splits with an embargo
+qt-008   # H  Winsorize a signal per date
+qt-009   # H  Forward-return labels and a lagged feature, no lookahead
+qt-011   # H  Decile long-short spread
+
+# ---- Chains (18)
+ch-001   # E  Churn 1/5: first look at the raw table
+ch-002   # M  Churn 2/5: clean the raw table
+ch-003   # M  Churn 3/5: features and target
+ch-004   # M  Churn 4/5: the modelling pipeline
+ch-005   # M  Churn 5/5: cross-validated AUC vs a baseline
+ch-006   # E  Salary 1/4: first look at the HR export
+ch-007   # M  Salary 2/4: clean the HR export
+ch-008   # M  Salary 3/4: features and target
+ch-009   # H  Salary 4/4: Ridge vs baseline, cross-validated
+ch-010   # E  Factor 1/5: the daily returns matrix
+ch-011   # M  Factor 2/5: lagged momentum and volatility features
+ch-012   # M  Factor 3/5: forward-return labels
+ch-013   # H  Factor 4/5: walk-forward predictions with an embargo
+ch-014   # M  Factor 5/5: information coefficient summary
+ch-015   # M  Segments 1/4: an RFM table
+ch-016   # M  Segments 2/4: tame skew, then scale
+ch-017   # H  Segments 3/4: choose k and cluster
+ch-018   # M  Segments 4/4: profile the clusters and map them in 2-D
+
+# ---- Fix the bug (12)
+bug-001  # E  Fix the bug: the scaler saw the test set
+bug-002  # E  Fix the bug: centering the wrong way
+bug-003  # E  Fix the bug: yesterday's return
+bug-006  # E  Fix the bug: annualized volatility
+bug-011  # E  Fix the bug: the top order is not row 0
+bug-004  # M  Fix the bug: an assignment that does nothing
+bug-005  # M  Fix the bug: orders without a region disappear
+bug-007  # M  Fix the bug: returns that jump between tickers
+bug-008  # M  Fix the bug: a join that multiplies rows
+bug-009  # M  Fix the bug: the average of ratios
+bug-010  # M  Fix the bug: a moving average that peeks ahead
+bug-012  # M  Fix the bug: shuffled folds on a time series

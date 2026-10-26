@@ -1,0 +1,10 @@
+{
+  "name": "leetstats-validate",
+  "private": true,
+  "description": "Runs LeetStats problem validation inside Pyodide (the browser runtime) under Node.",
+  "type": "module",
+  "config": { "seaborn": "0.13.2" },
+  "dependencies": {
+    "pyodide": "314.0.7"
+  }
+}
